@@ -75,7 +75,7 @@ end
 # activate :automatic_image_sizes
 
 # Reload the browser automatically whenever files change
-activate :livereload
+activate :livereload, host: '127.0.0.1'
 
 activate :imageoptim do |image_optim|
   image_optim.pngout_options = false # Should disable pngout
@@ -163,17 +163,15 @@ end
 
 configure :development do
   begin
-    if Middleman.const_get 'PreviewServer'
-      set :host, Middleman::PreviewServer.host
-      set :port, Middleman::PreviewServer.port
+    set :host, '0.0.0.0'
+    set :port, 4567
 
-      activate :disqus do |d|
-        # using a special shortname
-        d.shortname = 'btlocal'
-        d.root_url = root_url_with_port
-      end
-      # Used for generating absolute URLs
+    activate :disqus do |d|
+      # using a special shortname
+      d.shortname = 'btlocal'
+      d.root_url = root_url_with_port
     end
+    # Used for generating absolute URLs
   rescue NameError
     # Whoops.
   end
