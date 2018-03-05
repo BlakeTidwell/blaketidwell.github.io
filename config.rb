@@ -78,7 +78,7 @@ end
 activate :livereload, host: '127.0.0.1'
 
 activate :imageoptim do |image_optim|
-  image_optim.pngout_options = false # Should disable pngout
+  image_optim.pngout = false # Should disable pngout
 end
 
 activate :syntax
