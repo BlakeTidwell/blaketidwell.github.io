@@ -2,7 +2,7 @@
 # Blog settings
 ###
 
-activate :emoji,  dir: '/images/emoji'
+activate :gemoji
 
 # Time.zone = 'UTC'
 
@@ -37,18 +37,14 @@ data.redirects.each do |r|
   redirect r.from, to: r.to
 end
 
-###
-# Compass
-###
+activate :external_pipeline,
+  name: :webpack,
+  command: build? ? 'npm run build' : 'npm run start',
+  source: '.tmp/dist',
+  latency: 1
 
-# Change Compass configuration
-compass_config do |config|
-  config.additional_import_paths = [
-    '../bower_components/foundation/scss',
-    '../bower_components/foundation-icon-fonts',
-    '../bower_components/js-emoji'
-  ]
-end
+config[:js_dir] = 'source/javascripts'
+config[:css_dir] = 'source/stylesheets'
 
 ###
 # Page options, layouts, aliases and proxies
@@ -81,16 +77,16 @@ end
 # Reload the browser automatically whenever files change
 activate :livereload, host: '127.0.0.1'
 
-activate :imageoptim do |image_optim|
-  image_optim.pngout = false # Should disable pngout
-  image_optim.manifest = false
-end
+# activate :imageoptim do |image_optim|
+#   image_optim.pngout = false # Should disable pngout
+#   image_optim.manifest = false
+# end
 
-activate :syntax
+# activate :syntax
 
 set :url_root, 'http://www.blaketidwell.com'
 
-activate :search_engine_sitemap
+# activate :search_engine_sitemap
 
 # Methods defined in the helpers block are available in templates
 # helpers do
@@ -109,15 +105,14 @@ set :images_dir, 'images'
 set :markdown_engine, :redcarpet
 set :markdown, fenced_code_blocks: true, smartypants: true
 
-activate :deploy do |deploy|
-  deploy.build_before = true # default: false
-  deploy.method = :git
-  deploy.branch = 'master'
-end
+# activate :deploy do |deploy|
+#   deploy.build_before = true # default: false
+#   deploy.method = :git
+#   deploy.branch = 'master'
+# end
 
 # Build-specific configuration
 configure :build do
-  # For example, change the Compass output style for deployment
   activate :minify_css
 
   # Minify Javascript on build
@@ -133,11 +128,11 @@ configure :build do
 
   # Or use a different image path
   # set :http_prefix, '/Content/images/'
-  activate :disqus do |d|
-    # using a special shortname
-    d.shortname = 'blaketidwell'
-    d.root_url = root_url_with_port
-  end
+  # activate :disqus do |d|
+  #   # using a special shortname
+  #   d.shortname = 'blaketidwell'
+  #   d.root_url = root_url_with_port
+  # end
 end
 
 set :protocol, 'http://'
@@ -146,7 +141,7 @@ set :port, 80
 
 helpers do
   def root_url
-    protocol + host
+    config[:protocol] + config[:host]
   end
 
   def root_url_with_port
@@ -154,15 +149,15 @@ helpers do
   end
 
   def host_with_port
-    [host, optional_port].compact.join(':')
+    [config[:host], optional_port].compact.join(':')
   end
 
   def optional_port
-    port unless port.to_i == 80
+    config[:port] unless config[:port].to_i == 80
   end
 
   def image_url(source)
-    protocol + host_with_port + image_path(source)
+    config[:protocol] + host_with_port + image_path(source)
   end
 end
 
@@ -171,11 +166,11 @@ configure :development do
     set :host, '0.0.0.0'
     set :port, 4567
 
-    activate :disqus do |d|
-      # using a special shortname
-      d.shortname = 'btlocal'
-      d.root_url = root_url_with_port
-    end
+    # activate :disqus do |d|
+    #   # using a special shortname
+    #   d.shortname = 'btlocal'
+    #   d.root_url = root_url_with_port
+    # end
     # Used for generating absolute URLs
   rescue NameError
     # Whoops.
