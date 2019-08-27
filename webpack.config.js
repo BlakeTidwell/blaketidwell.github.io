@@ -7,7 +7,7 @@ const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
     entry: {
-        site: ['./source/javascripts/app.js', './source/stylesheets/app.css.scss']
+        app: ['./source/javascripts/app.js', './source/stylesheets/app.css.scss']
     },
     output: {
         filename: 'source/javascripts/[name].js',
@@ -18,11 +18,14 @@ module.exports = {
         rules: [
             {
                 test: /\.(sa|sc|c)ss$/,
+                resolve: {
+                    extensions: ['.scss', '.sass'],
+                },
                 use: [
                     {
                         loader: MiniCssExtractPlugin.loader,
                         options: {
-                            hot: process.env.NODE_ENV === 'development',
+                            hot: devMode
                         },
                     },
                     'css-loader',
@@ -32,7 +35,15 @@ module.exports = {
                             plugins: () => [require('autoprefixer')]
                         }
                     },
-                    'sass-loader'
+                    {
+                        loader: 'sass-loader',
+                         options: {
+                             includePaths: [
+                                 'source/stylesheets',
+                                 'node_modules/foundation-sites/scss'
+                             ]
+                         }
+                    }
                 ]
             }
         ]
@@ -41,7 +52,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: devMode ? '[name].css' : '[name].[hash].css',
+            filename: devMode ? 'source/stylesheets/[name].css' : 'source/stylesheets/[name].[hash].css',
             chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
         })
     ]

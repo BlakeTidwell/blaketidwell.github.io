@@ -18,5 +18,8 @@
   "scripts": {
     "start": "webpack --watch --progress --color",
     "build": "webpack --bail -p"
+  },
+  "dependencies": {
+    "foundation-sites": "^6.5.3"
   }
 }

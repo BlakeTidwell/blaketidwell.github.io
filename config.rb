@@ -2,7 +2,7 @@
 # Blog settings
 ###
 
-activate :gemoji
+activate :gemoji, size: 20
 
 # Time.zone = 'UTC'
 
@@ -82,7 +82,7 @@ activate :livereload, host: '127.0.0.1'
 #   image_optim.manifest = false
 # end
 
-# activate :syntax
+activate :syntax
 
 set :url_root, 'http://www.blaketidwell.com'
 
@@ -95,11 +95,6 @@ set :url_root, 'http://www.blaketidwell.com'
 #   end
 # end
 set :layout_dir, ''
-
-set :css_dir, 'stylesheets'
-
-set :js_dir, 'javascripts'
-
 set :images_dir, 'images'
 
 set :markdown_engine, :redcarpet
