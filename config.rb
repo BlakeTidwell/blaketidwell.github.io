@@ -21,36 +21,24 @@ data.redirects.each do |r|
   redirect r.from, to: r.to
 end
 
-page '/feed.xml', layout: false
-
 # Per-page layout changes:
-#
-# With no layout
-# page '/path/to/file.html', layout: false
-#
-# With alternative layout
-# page '/path/to/file.html', layout: :otherlayout
-#
-# A path which all have the same layout
-# with_layout :admin do
-#   page '/admin/*'
-# end
-
-# Proxy pages (http://middlemanapp.com/dynamic-pages/)
-# proxy '/this-page-has-no-template.html', '/template-file.html', locals: {
-#  which_fake_page: 'Rendering a fake page with a local variable' }
+page '/feed.xml', layout: false
 
 # Plugins
 # Automatic image dimensions on image_tag helper
 # activate :automatic_image_sizes
 
+activate :gemoji, size: 20
+activate :search_engine_sitemap
+activate :syntax
+
 activate :blog do |blog|
   # This will add a prefix to all links, template references and source paths
-  # blog.prefix = 'blog'
+  blog.prefix = 'articles'
 
-  blog.permalink = "articles/{year}/{month}/{day}/{title}.html"
+  blog.permalink = "{year}/{month}/{day}/{title}.html"
   # Matcher for blog source files
-  blog.sources = "articles/{year}-{month}-{day}-{title}.html"
+  blog.sources = "{year}-{month}-{day}-{title}.html"
   # blog.taglink = "tags/{tag}.html"
   blog.layout = 'article'
   # blog.summary_separator = /(READMORE)/
@@ -58,7 +46,7 @@ activate :blog do |blog|
   # blog.year_link = "{year}.html"
   # blog.month_link = "{year}/{month}.html"
   # blog.day_link = "{year}/{month}/{day}.html"
-  # blog.default_extension = ".markdown"
+  blog.default_extension = ".md"
 
   blog.tag_template = 'tag.html'
   blog.calendar_template = 'calendar.html'
@@ -69,28 +57,22 @@ activate :blog do |blog|
   # blog.page_link = "page/{num}"
 end
 
-# activate :deploy do |deploy|
-#   deploy.build_before = true # default: false
-#   deploy.method = :git
-#   deploy.branch = 'master'
-# end
-
-activate :gemoji, size: 20
-
 activate :external_pipeline,
   name: :webpack,
   command: build? ? 'npm run build' : 'npm run start',
   source: '.tmp/dist',
   latency: 1
 
-# activate :imageoptim do |image_optim|
-#   image_optim.pngout = false # Should disable pngout
-#   image_optim.manifest = false
+activate :imageoptim do |image_optim|
+  image_optim.pngout = false # Should disable pngout
+  image_optim.manifest = false
+end
+
+# activate :deploy do |deploy|
+#   deploy.build_before = true # default: false
+#   deploy.method = :git
+#   deploy.branch = 'master'
 # end
-
-# activate :search_engine_sitemap
-
-activate :syntax
 
 ###
 # Helpers
@@ -122,15 +104,14 @@ configure :development do
   activate :livereload, host: '127.0.0.1'
 
   begin
-    set :host, '0.0.0.0'
-    set :port, 4567
+    config[:host] = '0.0.0.0'
+    config[:port] = 4567
 
     # activate :disqus do |d|
     #   # using a special shortname
     #   d.shortname = 'btlocal'
     #   d.root_url = root_url_with_port
     # end
-    # Used for generating absolute URLs
   rescue NameError
     # Whoops.
   end
@@ -146,8 +127,6 @@ configure :build do
   # Use relative URLs
   # activate :relative_assets
 
-  # Or use a different image path
-  # set :http_prefix, '/Content/images/'
   # activate :disqus do |d|
   #   # using a special shortname
   #   d.shortname = 'blaketidwell'
