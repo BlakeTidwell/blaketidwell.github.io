@@ -7,10 +7,10 @@ const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
     entry: {
-        app: ['./source/javascripts/app.js', './source/stylesheets/app.css.scss']
+        app: ['./assets/javascripts/app.js', './assets/stylesheets/app.css.scss']
     },
     output: {
-        filename: 'source/javascripts/[name].js',
+        filename: 'assets/javascripts/[name].js',
         path: path.resolve(__dirname, '.tmp/dist')
     },
 
@@ -52,7 +52,7 @@ module.exports = {
         new MiniCssExtractPlugin({
             // Options similar to the same options in webpackOptions.output
             // both options are optional
-            filename: devMode ? 'source/stylesheets/[name].css' : 'source/stylesheets/[name].[hash].css',
+            filename: devMode ? 'assets/stylesheets/[name].css' : 'assets/stylesheets/[name].[hash].css',
             chunkFilename: devMode ? '[id].css' : '[id].[hash].css',
         })
     ]

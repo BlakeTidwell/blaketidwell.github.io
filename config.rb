@@ -1,10 +1,48 @@
-###
-# Blog settings
-###
+# Configuration
+config[:js_dir] = 'assets/javascripts'
+config[:css_dir] = 'assets/stylesheets'
+config[:layout_dir] = ''
+config[:images_dir] = 'images'
 
-activate :gemoji, size: 20
+config[:protocol] = 'http://'
+config[:host] = 'www.blaketidwell.com'
+config[:url_root] = 'http://www.blaketidwell.com'
+config[:port] = 80
+
+config[:markdown_engine] = :redcarpet
+config[:markdown] = { fenced_code_blocks: true, smartypants: true }
 
 # Time.zone = 'UTC'
+
+###
+# Page options, layouts, aliases and proxies
+###
+data.redirects.each do |r|
+  redirect r.from, to: r.to
+end
+
+page '/feed.xml', layout: false
+
+# Per-page layout changes:
+#
+# With no layout
+# page '/path/to/file.html', layout: false
+#
+# With alternative layout
+# page '/path/to/file.html', layout: :otherlayout
+#
+# A path which all have the same layout
+# with_layout :admin do
+#   page '/admin/*'
+# end
+
+# Proxy pages (http://middlemanapp.com/dynamic-pages/)
+# proxy '/this-page-has-no-template.html', '/template-file.html', locals: {
+#  which_fake_page: 'Rendering a fake page with a local variable' }
+
+# Plugins
+# Automatic image dimensions on image_tag helper
+# activate :automatic_image_sizes
 
 activate :blog do |blog|
   # This will add a prefix to all links, template references and source paths
@@ -31,11 +69,13 @@ activate :blog do |blog|
   # blog.page_link = "page/{num}"
 end
 
-page '/feed.xml', layout: false
+# activate :deploy do |deploy|
+#   deploy.build_before = true # default: false
+#   deploy.method = :git
+#   deploy.branch = 'master'
+# end
 
-data.redirects.each do |r|
-  redirect r.from, to: r.to
-end
+activate :gemoji, size: 20
 
 activate :external_pipeline,
   name: :webpack,
@@ -43,97 +83,18 @@ activate :external_pipeline,
   source: '.tmp/dist',
   latency: 1
 
-config[:js_dir] = 'source/javascripts'
-config[:css_dir] = 'source/stylesheets'
-
-###
-# Page options, layouts, aliases and proxies
-###
-
-# Per-page layout changes:
-#
-# With no layout
-# page '/path/to/file.html', layout: false
-#
-# With alternative layout
-# page '/path/to/file.html', layout: :otherlayout
-#
-# A path which all have the same layout
-# with_layout :admin do
-#   page '/admin/*'
-# end
-
-# Proxy pages (http://middlemanapp.com/dynamic-pages/)
-# proxy '/this-page-has-no-template.html', '/template-file.html', locals: {
-#  which_fake_page: 'Rendering a fake page with a local variable' }
-
-###
-# Helpers
-###
-
-# Automatic image dimensions on image_tag helper
-# activate :automatic_image_sizes
-
-# Reload the browser automatically whenever files change
-activate :livereload, host: '127.0.0.1'
-
 # activate :imageoptim do |image_optim|
 #   image_optim.pngout = false # Should disable pngout
 #   image_optim.manifest = false
 # end
 
-activate :syntax
-
-set :url_root, 'http://www.blaketidwell.com'
-
 # activate :search_engine_sitemap
 
-# Methods defined in the helpers block are available in templates
-# helpers do
-#   def some_helper
-#     'Helping'
-#   end
-# end
-set :layout_dir, ''
-set :images_dir, 'images'
+activate :syntax
 
-set :markdown_engine, :redcarpet
-set :markdown, fenced_code_blocks: true, smartypants: true
-
-# activate :deploy do |deploy|
-#   deploy.build_before = true # default: false
-#   deploy.method = :git
-#   deploy.branch = 'master'
-# end
-
-# Build-specific configuration
-configure :build do
-  activate :minify_css
-
-  # Minify Javascript on build
-  activate :minify_javascript
-
-  activate :gzip
-
-  # Enable cache buster
-  # activate :asset_hash
-
-  # Use relative URLs
-  # activate :relative_assets
-
-  # Or use a different image path
-  # set :http_prefix, '/Content/images/'
-  # activate :disqus do |d|
-  #   # using a special shortname
-  #   d.shortname = 'blaketidwell'
-  #   d.root_url = root_url_with_port
-  # end
-end
-
-set :protocol, 'http://'
-set :host, 'www.blaketidwell.com'
-set :port, 80
-
+###
+# Helpers
+###
 helpers do
   def root_url
     config[:protocol] + config[:host]
@@ -157,6 +118,9 @@ helpers do
 end
 
 configure :development do
+  # Reload the browser automatically whenever files change
+  activate :livereload, host: '127.0.0.1'
+
   begin
     set :host, '0.0.0.0'
     set :port, 4567
@@ -170,4 +134,23 @@ configure :development do
   rescue NameError
     # Whoops.
   end
+end
+
+# Build-specific configuration
+configure :build do
+  activate :gzip
+
+  # Enable cache buster
+  # activate :asset_hash
+
+  # Use relative URLs
+  # activate :relative_assets
+
+  # Or use a different image path
+  # set :http_prefix, '/Content/images/'
+  # activate :disqus do |d|
+  #   # using a special shortname
+  #   d.shortname = 'blaketidwell'
+  #   d.root_url = root_url_with_port
+  # end
 end
