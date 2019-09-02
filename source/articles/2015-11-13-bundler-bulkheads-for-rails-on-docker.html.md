@@ -38,7 +38,7 @@ damn](https://blog.docker.com/2015/05/understanding-docker-security-and-best-pra
 the intro, this is more about learning Docker by addressing this (arguably
 security-oriented) warning.
 
-## From the Dockermentation
+## The :egg:sample From the Dockermentation
 
 For reference, the example Dockerfile looks like so:
 

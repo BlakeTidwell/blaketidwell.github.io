@@ -29,3 +29,6 @@
 *.swo
 node_modules
 .tmp
+
+source/images/emoji
+!source/images/emoji/.gitkeep

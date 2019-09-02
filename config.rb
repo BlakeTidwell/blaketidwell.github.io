@@ -68,12 +68,6 @@ activate :imageoptim do |image_optim|
   image_optim.manifest = false
 end
 
-activate :deploy do |deploy|
-  deploy.build_before = true
-  deploy.deploy_method = :git
-  deploy.branch = 'master'
-end
-
 ###
 # Helpers
 ###
