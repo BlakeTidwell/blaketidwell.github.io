@@ -4,7 +4,7 @@ ruby '2.6.3'
 
 gem 'middleman', '~> 4.3'
 gem "middleman-blog", "~> 4.0"
-gem 'middleman-deploy', github: 'BlakeTidwell/middleman-deploy', branch: 'master'
+gem 'middleman-deploy', '2.0.0.pre.alpha'
 gem 'middleman-livereload', '~> 3.4'
 gem 'middleman-syntax', '~> 3.0'
 gem 'middleman-search_engine_sitemap', '~> 1.4'
