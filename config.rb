@@ -17,9 +17,9 @@ config[:markdown] = { fenced_code_blocks: true, smartypants: true }
 ###
 # Page options, layouts, aliases and proxies
 ###
-data.redirects.each do |r|
-  redirect r.from, to: r.to
-end
+# data.redirects.each do |r|
+#   redirect r.from, to: r.to
+# end
 
 # Per-page layout changes:
 page '/feed.xml', layout: false
@@ -34,11 +34,11 @@ activate :syntax
 
 activate :blog do |blog|
   # This will add a prefix to all links, template references and source paths
-  blog.prefix = 'articles'
+  # blog.prefix = 'blog'
 
   blog.permalink = "{year}/{month}/{day}/{title}.html"
   # Matcher for blog source files
-  blog.sources = "{year}-{month}-{day}-{title}.html"
+  blog.sources = "articles/{year}-{month}-{day}-{title}.html"
   # blog.taglink = "tags/{tag}.html"
   blog.layout = 'article'
   # blog.summary_separator = /(READMORE)/
