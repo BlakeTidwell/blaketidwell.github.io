@@ -1,3 +1,13 @@
+GIT
+  remote: git://github.com/BlakeTidwell/middleman-deploy.git
+  revision: 4d04b550b4c6888265d83ee9689f41e29dbae535
+  branch: master
+  specs:
+    middleman-deploy (2.0.0.pre.alpha)
+      middleman-core (>= 3.2)
+      net-sftp
+      ptools
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -109,6 +119,9 @@ GEM
       rouge (~> 3.2)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
+    net-sftp (2.1.2)
+      net-ssh (>= 2.6.5)
+    net-ssh (5.2.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
     padrino-helpers (0.13.3.4)
@@ -119,6 +132,7 @@ GEM
       activesupport (>= 3.1)
     parallel (1.17.0)
     progress (3.5.2)
+    ptools (1.3.5)
     public_suffix (3.1.1)
     rack (2.0.7)
     rack-livereload (0.3.17)
@@ -147,6 +161,7 @@ DEPENDENCIES
   builder (~> 3.0)
   middleman (~> 4.3)
   middleman-blog (~> 4.0)
+  middleman-deploy!
   middleman-gemoji (~> 0.1)
   middleman-imageoptim (~> 0.3)
   middleman-livereload (~> 3.4)
