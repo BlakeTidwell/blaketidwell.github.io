@@ -74,8 +74,7 @@ only one time I will do it.
 for hinting that `rbenv` was probably overkill and pushing me in the right
 direction with this approach by suggesting I try vendoring gems, etc.*
 
-```
-
+```docker
 FROM ruby:2.2.3
 RUN apt-get update -qq
 RUN apt-get install -y build-essential libpq-dev

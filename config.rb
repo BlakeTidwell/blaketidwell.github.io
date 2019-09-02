@@ -115,6 +115,10 @@ end
 configure :build do
   activate :gzip
 
+  # TODO: Ignore *any* file named .gitkeep.
+  # TODO: Fix this; doesn't seem to do anything.
+  # ignore 'source/images/emoji/.gitkeep'
+
   # Enable cache buster
   # activate :asset_hash
 
