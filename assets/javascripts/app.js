@@ -1,7 +1,8 @@
-// Foundation JavaScript
-// Documentation can be found at: http://foundation.zurb.com/docs
-// $(document).foundation();
+const FastClick = require('fastclick');
+require('./plugins');
 
-// TODO: Decide whether to include any social media scripts
-// require "vendor/fb"
-// require "vendor/twitter"
+if ('addEventListener' in document) {
+    document.addEventListener('DOMContentLoaded', function() {
+        FastClick.attach(document.body);
+    }, false);
+}

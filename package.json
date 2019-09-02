@@ -20,6 +20,9 @@
     "build": "webpack --bail -p"
   },
   "dependencies": {
-    "foundation-sites": "^6.5.3"
+    "fastclick": "^1.0.6",
+    "foundation-sites": "^6.5.3",
+    "jquery": "^3.4.1",
+    "what-input": "^5.2.3"
   }
 }

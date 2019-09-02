@@ -38,12 +38,11 @@ damn](https://blog.docker.com/2015/05/understanding-docker-security-and-best-pra
 the intro, this is more about learning Docker by addressing this (arguably
 security-oriented) warning.
 
-## The :egg:sample From the Dockermentation
+## From the Dockermentation
 
 For reference, the example Dockerfile looks like so:
 
-```
-
+```docker
 FROM ruby:2.2.0
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev
 RUN mkdir /myapp
