@@ -14,5 +14,5 @@ gem 'middleman-gemoji', '~> 0.1'
 
 # For feed.xml.builder
 gem 'builder', '~> 3.0'
-gem 'nokogiri', '~> 1.8.0'
-gem 'redcarpet', '~> 2.3.0'
+gem 'nokogiri', '~> 1.10'
+gem 'redcarpet', '~> 2.3'
