@@ -32,7 +32,7 @@
               =link_to data.site.owner, '/'
             %h2=data.site.tagline
           .small-3.columns
-            %img.avatar.show-for-medium-up{src: data.site.gravatar, alt: "Blake Tidwell Gravatar"}
+            %img.avatar.show-for-medium{src: data.site.gravatar, alt: "Blake Tidwell Gravatar"}
         -# .row
         -#   .small-12.medium-offset-9.medium-3.columns
         -#     %ul.social.inline-list
@@ -43,7 +43,7 @@
     #container.row
       #main.small-12.medium-8.columns{role: "main"}
         = yield
-      %aside#filters.medium-4.columns.show-for-medium-up
+      %aside#filters.medium-4.columns.show-for-medium
         %h3 Recent Articles
         %ul
           -blog.articles[0...10].each do |article|

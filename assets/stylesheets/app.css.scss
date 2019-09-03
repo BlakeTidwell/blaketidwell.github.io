@@ -59,7 +59,7 @@ $fi-path: "/fonts";
 // Helpers
 // @include foundation-float-classes;
 // @include foundation-flex-classes;
-// @include foundation-visibility-classes;
+@include foundation-visibility-classes;
 // @include foundation-prototype-classes;
 
 // @import "foundation-icons";
@@ -218,6 +218,7 @@ ul.social{
 #container{ }
 
 h1.article-title {
+  position: relative;
   text-transform: uppercase;
   margin-bottom: 0.5rem;
   + .share-container {
@@ -228,8 +229,8 @@ h1.article-title {
     height: 3px;
     display: inline-block;
     position: absolute;
-    top: 2.75rem;
-    width: 20px;
+    top: 2rem;
+    width: 15px;
     content: '\00a0';
   }
 }
