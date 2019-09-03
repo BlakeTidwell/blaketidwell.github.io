@@ -28,7 +28,6 @@ page '/feed.xml', layout: false
 # Automatic image dimensions on image_tag helper
 # activate :automatic_image_sizes
 
-activate :gemoji, size: 20
 activate :search_engine_sitemap
 activate :syntax
 
@@ -62,6 +61,7 @@ activate :external_pipeline,
   command: build? ? 'npm run build' : 'npm run start',
   source: '.tmp/dist',
   latency: 1
+activate :gemoji, size: 20
 
 activate :imageoptim do |image_optim|
   image_optim.pngout = false # Should disable pngout

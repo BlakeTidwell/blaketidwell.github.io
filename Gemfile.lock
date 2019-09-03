@@ -1,3 +1,12 @@
+GIT
+  remote: git://github.com/BlakeTidwell/middleman-gemoji.git
+  revision: 7f98bcd563c2a6a89c4f60a4a86bbeb46af8bf94
+  branch: master
+  specs:
+    middleman-gemoji (0.1.2)
+      gemoji (>= 3.0)
+      middleman (>= 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -89,9 +98,6 @@ GEM
       servolux
       tilt (~> 2.0.9)
       uglifier (~> 3.0)
-    middleman-gemoji (0.1.2)
-      gemoji (>= 2.1)
-      middleman (>= 4.0)
     middleman-gh-pages (0.4.1)
       rake (> 0.9.3)
     middleman-imageoptim (0.3.0)
@@ -150,7 +156,7 @@ DEPENDENCIES
   builder (~> 3.0)
   middleman (~> 4.3)
   middleman-blog (~> 4.0)
-  middleman-gemoji (~> 0.1)
+  middleman-gemoji!
   middleman-gh-pages (~> 0.4)
   middleman-imageoptim (~> 0.3)
   middleman-livereload (~> 3.4)

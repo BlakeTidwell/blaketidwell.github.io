@@ -8,9 +8,9 @@ gem 'middleman-gh-pages', '~> 0.4'
 gem 'middleman-livereload', '~> 3.4'
 gem 'middleman-syntax', '~> 3.0'
 gem 'middleman-search_engine_sitemap', '~> 1.4'
-# gem 'middleman-disqus', github: 'BlakeTidwell/middleman-disqus', branch: 'master'
 gem 'middleman-imageoptim', '~> 0.3'
-gem 'middleman-gemoji', '~> 0.1'
+gem 'middleman-gemoji', github: 'BlakeTidwell/middleman-gemoji', branch: 'master'
+# gem 'middleman-disqus', github: 'BlakeTidwell/middleman-disqus', branch: 'master'
 
 # For feed.xml.builder
 gem 'builder', '~> 3.0'
