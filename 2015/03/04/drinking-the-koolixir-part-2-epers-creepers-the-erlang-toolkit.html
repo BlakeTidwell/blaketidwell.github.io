@@ -3,11 +3,11 @@
 <!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]> ><! <![endif]-->
-<html class='no-js'>
+<html class='no-js' lang='en'>
 <!-- <![endif] -->
-<head></head>
+<head>
 <meta charset='utf-8'>
-<meta content='IE=edge;chrome=1' http-equiv='X-UA-Compatible'>
+<meta content='IE=edge' http-equiv='X-UA-Compatible'>
 <meta content='Blake Tidwell, professional web developer and aspiring EDM producer, talks bytes, beats, and philosophy.' name='description'>
 <meta content='width=device-width' name='viewport'>
 <meta content='summary' name='twitter:card'>
@@ -20,15 +20,11 @@
 Blake Tidwell - Drinking The Koolixir (Part 2) - EPERs Creepers, The Erlang Toolkit!
 </title>
 <link rel="alternate" type="application/atom+xml" title="Atom Feed" href="/feed.xml" />
-<link href="/stylesheets/app.css" rel="stylesheet" type="text/css" />
+<link href="/assets/stylesheets/app.css" rel="stylesheet" />
 <link href='/favicon.ico?v=3' rel='shortcut icon'>
 <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,700' rel='stylesheet' type='text/css'>
-</html>
+</head>
 <body>
-<!--[if lt IE 7]>
-<p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser today</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to better experience this site.</p>
-<![endif]-->
-<div id='fb-root'></div>
 <div class='row' id='header'>
 <div class='small-12 columns'>
 <div class='row'>
@@ -39,7 +35,7 @@ Blake Tidwell - Drinking The Koolixir (Part 2) - EPERs Creepers, The Erlang Tool
 <h2>Code. Create. Connect.</h2>
 </div>
 <div class='small-3 columns'>
-<img class='avatar show-for-medium-up' src='https://www.gravatar.com/avatar/b761c938fc4158ea4eed9f8283ac9fc3.png'>
+<img alt='Blake Tidwell Gravatar' class='avatar show-for-medium' src='https://www.gravatar.com/avatar/b761c938fc4158ea4eed9f8283ac9fc3.png'>
 </div>
 </div>
 </div>
@@ -53,7 +49,7 @@ of tools for debugging and performance profiling: EPER. I <em>think</em> it stan
 &ldquo;Erlang PERformance tools&rdquo;, but it could also mean &ldquo;Everything Proves Erlang
 Rules&rdquo; or &ldquo;Egrets Prefer to Eat Robots&rdquo; or really anything for that matter. One
 thing is for certain, however: getting these tools built and running on Mac OS X
-was fraught with <img alt="fire" src="/images/emoji/fire.png" style="vertical-align:middle;" width="20" height="20" />danger<img alt="fire" src="/images/emoji/fire.png" style="vertical-align:middle;" width="20" height="20" /> and <img alt="boom" src="/images/emoji/boom.png" style="vertical-align:middle;" width="20" height="20" /> build errors. <img alt="boom" src="/images/emoji/boom.png" style="vertical-align:middle;" width="20" height="20" />.</p>
+was fraught with <img class="gemoji" alt="fire" src="/images/emoji/unicode/1f525.png" width="20" height="20" />danger<img class="gemoji" alt="fire" src="/images/emoji/unicode/1f525.png" width="20" height="20" /> and <img class="gemoji" alt="boom" src="/images/emoji/unicode/1f4a5.png" width="20" height="20" /> build errors. <img class="gemoji" alt="boom" src="/images/emoji/unicode/1f4a5.png" width="20" height="20" />.</p>
 
 <p></p>
 
@@ -61,9 +57,9 @@ was fraught with <img alt="fire" src="/images/emoji/fire.png" style="vertical-al
 
 <p>Before I got down to the business of trying to <code>make</code> and <code>make install</code> EPER,
 it made sense to run <code>make test</code> to ensure everything was in working order. Why
-start there? I don&rsquo;t know, I guess I <img alt="heart" src="/images/emoji/heart.png" style="vertical-align:middle;" width="20" height="20" /> tests or something. Maybe I was
+start there? I don&rsquo;t know, I guess I <img class="gemoji" alt="heart" src="/images/emoji/unicode/2764.png" width="20" height="20" /> tests or something. Maybe I was
 abandoned as a child with a tribe of poorly tested hunter-gatherers, so I HAVE
-TO CONFIRM STABILITY BEFORE CODING. Who knows?! <img alt="tired_face" src="/images/emoji/tired_face.png" style="vertical-align:middle;" width="20" height="20" /> Seemed like a
+TO CONFIRM STABILITY BEFORE CODING. Who knows?! <img class="gemoji" alt="tired_face" src="/images/emoji/unicode/1f62b.png" width="20" height="20" /> Seemed like a
 decent way to figure out how the system ticks, and learn a little more about how
 the pieces of the Erlang environment fit together.</p>
 
@@ -73,19 +69,17 @@ the pieces of the Erlang environment fit together.</p>
 
 <p>Le duh. Right off the bat, I ran into issues with <code>eunit</code> tests not passing.
 Specifically, the first run of <code>make test</code> yielded the following:</p>
-<pre class="highlight shell"><code><span class="o">=</span>INFO <span class="nv">REPORT</span><span class="o">====</span> 4-Mar-2015::19:05:02 <span class="o">===</span>
+<div class="highlight"><pre class="highlight shell"><code><span class="o">=</span>INFO <span class="nv">REPORT</span><span class="o">====</span> 4-Mar-2015::19:05:02 <span class="o">===</span>
 Protocol: <span class="s2">"inet_tcp"</span>: register/listen error: econnrefused
 prfDog: t0_test <span class="o">(</span>module <span class="s1">'prfDog'</span><span class="o">)</span>...<span class="k">*</span>failed<span class="k">*</span>
 <span class="k">in function </span>prfHost:assert_proxy/1 <span class="o">(</span>src/prfHost.erl, line 67<span class="o">)</span>
 <span class="k">in </span>call from prfHost:start/4 <span class="o">(</span>src/prfHost.erl, line 26<span class="o">)</span>
 <span class="k">in </span>call from prfDog:t0_test/0 <span class="o">(</span>src/prfDog.erl, line 178<span class="o">)</span>
 <span class="k">**</span><span class="nb">exit</span>:<span class="o">{</span>no_proxy,nonode@nohost<span class="o">}</span>
-</code></pre>
-
+</code></pre></div>
 <p>The solution? Start <code>epmd</code> in &ldquo;daemon&rdquo; mode:</p>
-<pre class="highlight shell"><code>epmd -daemon
-</code></pre>
-
+<div class="highlight"><pre class="highlight shell"><code>epmd <span class="nt">-daemon</span>
+</code></pre></div>
 <p>That solved the issue, but does raise some more questions. Like: What the heck
 is <code>epmd</code>? How do I manage this service on a Mac? Is it <code>lunchy</code> compatible?
 <code>launchd</code>? <code>initctl</code>?  CAN I JUST SHOUT AT IT. Will definitely be digging deeper
@@ -95,28 +89,26 @@ into <code>epmd</code> in a future post. For now, we march onward through Error 
 
 <p>The installation process next failed because <code>gperfGtk</code> claims it is missing
 something:</p>
-<pre class="highlight shell"><code>src/gperfGtk.erl:386: Warning: gperfGtk:g/1 calls undefined <span class="k">function </span>gtknode:cmd/2 <span class="o">(</span>Xref<span class="o">)</span>
+<div class="highlight"><pre class="highlight shell"><code>src/gperfGtk.erl:386: Warning: gperfGtk:g/1 calls undefined <span class="k">function </span>gtknode:cmd/2 <span class="o">(</span>Xref<span class="o">)</span>
 src/gperfGtk.erl:37: Warning: gperfGtk:init/0 calls undefined <span class="k">function </span>gtknode:start/1 <span class="o">(</span>Xref<span class="o">)</span>
 src/sherk.erl:567: Warning: sherk:g/1 calls undefined <span class="k">function </span>gtknode:cmd/2 <span class="o">(</span>Xref<span class="o">)</span>
 src/sherk.erl:56: Warning: sherk:init/0 calls undefined <span class="k">function </span>gtknode:start/1 <span class="o">(</span>Xref<span class="o">)</span>
 ERROR: xref failed <span class="k">while </span>processing /Users/BTidwellGrio/Code/elx_workspace/eper: rebar_abort
 make: <span class="k">***</span> <span class="o">[</span>xref] Error 1
-</code></pre>
-
+</code></pre></div>
 <p>A little Garggling turned up the fact that <code>gtknode</code> is an OSS Erlang library
 for mapping to the popular UI library, GTK. I pulled down <a href="https://github.com/massemanet/gtknode">the
 repo</a>, and after a little more digging,
 found the command for building and installing it:</p>
-<pre class="highlight plaintext"><code>aclocal ; autoconf ; automake ; ./configure --prefix=/your/cool/prefix ; make ; make install
-</code></pre>
-
+<div class="highlight"><pre class="highlight plaintext"><code>aclocal ; autoconf ; automake ; ./configure --prefix=/your/cool/prefix ; make ; make install
+</code></pre></div>
 <p>For the prefix here, I personally like to keep all of my shell/library Erlang in
 a <code>.erllib</code> folder in my home directory. I track a couple of helper files in the
 same folder in a dotfiles repo, and ignore the build output of all the remaining
 libraries.</p>
 
 <p>The first run of the <code>gtknode</code> build exited with:</p>
-<pre class="highlight plaintext"><code>Checking for GTK... no
+<div class="highlight"><pre class="highlight plaintext"><code>Checking for GTK... no
 configure: error: Package requirements (gmodule-2.0 libglade-2.0 gtk+-2.0,
 gdk-pixbuf-2.0) were not met:
 
@@ -124,8 +116,7 @@ Package 'libxml-2.0', required by 'libglade-2.0', not found
 
 Consider adjusting the PKG_CONFIG_PATH environment variable if you
 installed software in a non-standard prefix.
-</code></pre>
-
+</code></pre></div>
 <p>This story checks out; one can fairly safely assume that a library named
 <code>gtkWHATEVER</code> will, in fact, need some other thing called <code>GTK</code>. The <code>README</code>
 for <code>gtknode</code> encourages the use of Homebrew to install <code>glade</code> (amongst myriad
@@ -133,13 +124,12 @@ other things). This first required adding the X11 homebrew tap. Additionally, a
 couple more runs of the build script revealed a dependency on XQuart, which is
 easily managed using Homebrew Cask. As I had never used Cask up to this point, I
 have included it in the installation steps below:</p>
-<pre class="highlight plaintext"><code>brew tap homebrew/x11
+<div class="highlight"><pre class="highlight plaintext"><code>brew tap homebrew/x11
 brew install glade fontconfig freetype libpng
 brew install caskroom/cask/brew-cask
 brew cask doctor # This triggers a sudo prompt to configure needed directories
 brew cask install xquartz
-</code></pre>
-
+</code></pre></div>
 <p>Since we installed <code>glade</code> and some of the other libraries using Homebrew,
 running another build will result in <code>&quot;Package &#39;xcb-shm&#39;, required by &#39;cairo&#39;,
 not found&quot;</code> (or any number of other <code>&quot;[Package] not found&quot;</code> errors). I am not
@@ -147,27 +137,24 @@ completely familiar with <code>pkg-config</code>, but it seems the gist of the p
 that Homebrew installs binaries and libraries in non-default locations (at least
 from a Linux perspective). This can be fixed by exporting the <code>pkgconfig</code>
 environment variable*:</p>
-<pre class="highlight plaintext"><code>PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
-</code></pre>
-
+<div class="highlight"><pre class="highlight plaintext"><code>PKG_CONFIG_PATH=/usr/local/opt/libxml2/lib/pkgconfig:/usr/local/lib/pkgconfig:/opt/X11/lib/pkgconfig
+</code></pre></div>
 <p>*<em>This lovely bit of minutiae comes courtesy of a completely unrelated page in
 the <a href="https://github.com/Automattic/node-canvas/wiki/Installation---OSX">node-canvas Wiki</a>.</em></p>
 
 <p>With all this in place, <code>gtknode</code> should compile, and <code>make test</code> from the
 <code>eper</code> project root should pass. Then, the EPER project can be built using the
 same tune as <code>gtknode</code>:</p>
-<pre class="highlight plaintext"><code>aclocal ; autoconf ; automake ; ./configure --prefix=/your/cool/prefix ; make ; make install
-</code></pre>
-
+<div class="highlight"><pre class="highlight plaintext"><code>aclocal ; autoconf ; automake ; ./configure --prefix=/your/cool/prefix ; make ; make install
+</code></pre></div>
 <h2>Then What?</h2>
 
 <p>Now that these libraries are compiled and installed using the prefix we provided
 earlier, we can add them to the Erlang shell using the <code>ERL_LIBS</code> environment
 variable. If you used the same convention stated here (i.e. <code>.erllib</code> in the
 home directory), then this variable should look like the following:</p>
-<pre class="highlight plaintext"><code>export ERL_LIBS="$HOME/.erllib/lib/erlang/lib"
-</code></pre>
-
+<div class="highlight"><pre class="highlight plaintext"><code>export ERL_LIBS="$HOME/.erllib/lib/erlang/lib"
+</code></pre></div>
 <p>On startup, the Erlang shell will load any source code in the <code>ebin</code> directory
 of any libraries contained under the <code>ERL_LIBS</code> directory. If you refresh this
 environment variable and then run <code>erl</code> from the command-line, you should be
@@ -185,62 +172,62 @@ expect to see more about proper <code>redbug</code> usage here on my blarg.</p>
 </article>
 
 </div>
-<aside class='medium-4 columns show-for-medium-up' id='filters'>
+<aside class='medium-4 columns show-for-medium' id='filters'>
 <h3>Recent Articles</h3>
 <ul>
 <li>
 <a href="/2015/11/13/bundler-bulkheads-for-rails-on-docker.html">Bundler Bulkheads for Rails on Docker</a>
-<span>Nov&nbsp;13</span>
+<span>Nov&nbsp;13&nbsp;2015</span>
 </li>
 <li>
 <a href="/2015/08/21/emulate-default-scope-with-around-filter-and-scoping.html">Emulate Default Scope with Around Filter and Scoping</a>
-<span>Aug&nbsp;21</span>
+<span>Aug&nbsp;21&nbsp;2015</span>
 </li>
 <li>
 <a href="/2015/08/16/keeping-your-app-from-flying-off-of-the-rails-with-bdd-part-1.html">Keeping Your App from Flying Off of the Rails with BDD - Part 1 of Question Mark</a>
-<span>Aug&nbsp;16</span>
+<span>Aug&nbsp;16&nbsp;2015</span>
 </li>
 <li>
 <a href="/2015/03/04/drinking-the-koolixir-part-2-epers-creepers-the-erlang-toolkit.html">Drinking The Koolixir (Part 2) - EPERs Creepers, The Erlang Toolkit!</a>
-<span>Mar&nbsp; 4</span>
+<span>Mar&nbsp; 4&nbsp;2015</span>
 </li>
 <li>
 <a href="/2015/02/07/drinking-the-koolixir.html">Drinking The Koolixir (Part 1)</a>
-<span>Feb&nbsp; 7</span>
+<span>Feb&nbsp; 7&nbsp;2015</span>
 </li>
 <li>
 <a href="/2015/01/27/ember-rails-csrf-handling.html">Ember Rails CSRF Handling</a>
-<span>Jan&nbsp;27</span>
+<span>Jan&nbsp;27&nbsp;2015</span>
 </li>
 <li>
 <a href="/2014/11/24/leds-and-303s-static-page-on-divshot.html">LEDs and 303s Static Page on Divshot</a>
-<span>Nov&nbsp;24</span>
+<span>Nov&nbsp;24&nbsp;2014</span>
 </li>
 <li>
 <a href="/2014/03/23/starting-from-the-middleman.html">Starting From the Middle(Man)</a>
-<span>Mar&nbsp;23</span>
+<span>Mar&nbsp;23&nbsp;2014</span>
 </li>
 </ul>
 <h3>Tags</h3>
 <ul>
-<li><a href="/tags/functional.html">functional (2)</a></li>
-<li><a href="/tags/languages.html">languages (2)</a></li>
-<li><a href="/tags/erlang.html">erlang (2)</a></li>
-<li><a href="/tags/elixir.html">elixir (2)</a></li>
-<li><a href="/tags/technical.html">technical (7)</a></li>
-<li><a href="/tags/emberjs.html">emberjs (1)</a></li>
-<li><a href="/tags/rails.html">rails (3)</a></li>
-<li><a href="/tags/ruby.html">ruby (5)</a></li>
-<li><a href="/tags/quickread.html">quickread (2)</a></li>
-<li><a href="/tags/dragons.html">dragons (1)</a></li>
 <li><a href="/tags/docker.html">docker (1)</a></li>
 <li><a href="/tags/containers.html">containers (1)</a></li>
 <li><a href="/tags/bulkheads.html">bulkheads (1)</a></li>
 <li><a href="/tags/security.html">security (1)</a></li>
+<li><a href="/tags/technical.html">technical (7)</a></li>
+<li><a href="/tags/ruby.html">ruby (5)</a></li>
+<li><a href="/tags/rails.html">rails (3)</a></li>
 <li><a href="/tags/how-to.html">how-to (3)</a></li>
-<li><a href="/tags/blog.html">blog (1)</a></li>
-<li><a href="/tags/deployment.html">deployment (1)</a></li>
+<li><a href="/tags/quickread.html">quickread (2)</a></li>
 <li><a href="/tags/cash-cats.html">cash cats (1)</a></li>
+<li><a href="/tags/functional.html">functional (2)</a></li>
+<li><a href="/tags/languages.html">languages (2)</a></li>
+<li><a href="/tags/erlang.html">erlang (2)</a></li>
+<li><a href="/tags/elixir.html">elixir (2)</a></li>
+<li><a href="/tags/emberjs.html">emberjs (1)</a></li>
+<li><a href="/tags/dragons.html">dragons (1)</a></li>
+<li><a href="/tags/deployment.html">deployment (1)</a></li>
+<li><a href="/tags/blog.html">blog (1)</a></li>
 </ul>
 <h3>By Year</h3>
 <ul>
@@ -256,35 +243,35 @@ expect to see more about proper <code>redbug</code> usage here on my blarg.</p>
 <ul>
 <li>
 <a href="/2015/11/13/bundler-bulkheads-for-rails-on-docker.html">Bundler Bulkheads for Rails on Docker</a>
-<span>Nov&nbsp;13</span>
+<span>Nov&nbsp;13&nbsp;2015</span>
 </li>
 <li>
 <a href="/2015/08/21/emulate-default-scope-with-around-filter-and-scoping.html">Emulate Default Scope with Around Filter and Scoping</a>
-<span>Aug&nbsp;21</span>
+<span>Aug&nbsp;21&nbsp;2015</span>
 </li>
 <li>
 <a href="/2015/08/16/keeping-your-app-from-flying-off-of-the-rails-with-bdd-part-1.html">Keeping Your App from Flying Off of the Rails with BDD - Part 1 of Question Mark</a>
-<span>Aug&nbsp;16</span>
+<span>Aug&nbsp;16&nbsp;2015</span>
 </li>
 <li>
 <a href="/2015/03/04/drinking-the-koolixir-part-2-epers-creepers-the-erlang-toolkit.html">Drinking The Koolixir (Part 2) - EPERs Creepers, The Erlang Toolkit!</a>
-<span>Mar&nbsp; 4</span>
+<span>Mar&nbsp; 4&nbsp;2015</span>
 </li>
 <li>
 <a href="/2015/02/07/drinking-the-koolixir.html">Drinking The Koolixir (Part 1)</a>
-<span>Feb&nbsp; 7</span>
+<span>Feb&nbsp; 7&nbsp;2015</span>
 </li>
 <li>
 <a href="/2015/01/27/ember-rails-csrf-handling.html">Ember Rails CSRF Handling</a>
-<span>Jan&nbsp;27</span>
+<span>Jan&nbsp;27&nbsp;2015</span>
 </li>
 <li>
 <a href="/2014/11/24/leds-and-303s-static-page-on-divshot.html">LEDs and 303s Static Page on Divshot</a>
-<span>Nov&nbsp;24</span>
+<span>Nov&nbsp;24&nbsp;2014</span>
 </li>
 <li>
 <a href="/2014/03/23/starting-from-the-middleman.html">Starting From the Middle(Man)</a>
-<span>Mar&nbsp;23</span>
+<span>Mar&nbsp;23&nbsp;2014</span>
 </li>
 </ul>
 </div>
@@ -293,28 +280,28 @@ expect to see more about proper <code>redbug</code> usage here on my blarg.</p>
 <div class='row'>
 <div class='small-12 medium-6 columns'>
 <ul class='tag-group'>
-<li><a href="/tags/functional.html">functional (2)</a></li>
-<li><a href="/tags/languages.html">languages (2)</a></li>
-<li><a href="/tags/erlang.html">erlang (2)</a></li>
-<li><a href="/tags/elixir.html">elixir (2)</a></li>
+<li><a href="/tags/docker.html">docker (1)</a></li>
+<li><a href="/tags/containers.html">containers (1)</a></li>
+<li><a href="/tags/bulkheads.html">bulkheads (1)</a></li>
+<li><a href="/tags/security.html">security (1)</a></li>
 <li><a href="/tags/technical.html">technical (7)</a></li>
-<li><a href="/tags/emberjs.html">emberjs (1)</a></li>
-<li><a href="/tags/rails.html">rails (3)</a></li>
 <li><a href="/tags/ruby.html">ruby (5)</a></li>
+<li><a href="/tags/rails.html">rails (3)</a></li>
+<li><a href="/tags/how-to.html">how-to (3)</a></li>
 <li><a href="/tags/quickread.html">quickread (2)</a></li>
 </ul>
 </div>
 <div class='small-12 medium-6 columns'>
 <ul class='tag-group last'>
-<li><a href="/tags/dragons.html">dragons (1)</a></li>
-<li><a href="/tags/docker.html">docker (1)</a></li>
-<li><a href="/tags/containers.html">containers (1)</a></li>
-<li><a href="/tags/bulkheads.html">bulkheads (1)</a></li>
-<li><a href="/tags/security.html">security (1)</a></li>
-<li><a href="/tags/how-to.html">how-to (3)</a></li>
-<li><a href="/tags/blog.html">blog (1)</a></li>
-<li><a href="/tags/deployment.html">deployment (1)</a></li>
 <li><a href="/tags/cash-cats.html">cash cats (1)</a></li>
+<li><a href="/tags/functional.html">functional (2)</a></li>
+<li><a href="/tags/languages.html">languages (2)</a></li>
+<li><a href="/tags/erlang.html">erlang (2)</a></li>
+<li><a href="/tags/elixir.html">elixir (2)</a></li>
+<li><a href="/tags/emberjs.html">emberjs (1)</a></li>
+<li><a href="/tags/dragons.html">dragons (1)</a></li>
+<li><a href="/tags/deployment.html">deployment (1)</a></li>
+<li><a href="/tags/blog.html">blog (1)</a></li>
 </ul>
 </div>
 </div>
@@ -328,5 +315,6 @@ expect to see more about proper <code>redbug</code> usage here on my blarg.</p>
 </div>
 </div>
 </div>
-<script src="/javascripts/app.js" type="text/javascript"></script>
+<script src="/assets/javascripts/app.js"></script>
 </body>
+</html>
