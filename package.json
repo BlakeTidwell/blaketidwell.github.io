@@ -22,7 +22,7 @@
   "dependencies": {
     "fastclick": "^1.0.6",
     "foundation-sites": "^6.5.3",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "what-input": "^5.2.3"
   }
 }
