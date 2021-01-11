@@ -15,4 +15,4 @@ gem 'middleman-gemoji', github: 'BlakeTidwell/middleman-gemoji', branch: 'master
 # For feed.xml.builder
 gem 'builder', '~> 3.0'
 gem 'nokogiri', '~> 1.10'
-gem 'redcarpet', '~> 2.3'
+gem 'redcarpet', '~> 3.5'
